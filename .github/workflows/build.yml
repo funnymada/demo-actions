@@ -1,30 +1,30 @@
-name: Build and Push Artifact
-
+name: run artifact
 on:
   push:
     branches:
-      - master
+        -master
 
   workflow_dispatch:
 
-jobs:
+jobs: 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-lastest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4 
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install
+      - name: install dependencies
+        uses: npm install
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-output
-          path: ./**
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
+        with: 
+          name: my-executable-program
+          path:  |
+            ./**
