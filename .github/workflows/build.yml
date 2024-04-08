@@ -1,0 +1,32 @@
+on:
+  push:
+    branches:
+        -master
+
+  workflow_dispatch:
+
+jobs: 
+  build:
+    runs-on: ubuntu-lastest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+
+      - name: install dependencies
+        uses: npm install
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
+        with: 
+          name: my-executable-program
+          path:  |
+            ./**
+          
+
+
+            
+          
